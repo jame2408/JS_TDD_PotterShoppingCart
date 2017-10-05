@@ -55,6 +55,19 @@ describe('Buy Harry Potter Books', () => {
             amountShouldBe(expected, potterBooks);
         });
 
+        it('Test_checkout_5_books_amount_should_be_375', () => {
+            var expected = 375;
+            var potterBooks = [
+                ISBN = 1,
+                ISBN = 2,
+                ISBN = 3,
+                ISBN = 4,
+                ISBN = 5
+            ];
+
+            amountShouldBe(expected, potterBooks);
+        });
+
         var amountShouldBe = function (expected, books) {
             var actual = 0;
 
