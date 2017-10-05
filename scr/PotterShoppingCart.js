@@ -4,7 +4,8 @@ class PotterShoppingCart {
         this.discount = {
             '0': 0,
             '1': 1,
-            '2': 0.95
+            '2': 0.95,
+            '3': 0.9
         }
     }
     Checkout(books) {
