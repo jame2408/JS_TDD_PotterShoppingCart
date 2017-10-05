@@ -1,3 +1,5 @@
+var _ = require("lodash");
+
 class PotterShoppingCart {
     constructor() {
         this.unitPrice = 100;
@@ -11,10 +13,35 @@ class PotterShoppingCart {
         }
     }
     Checkout(books) {
-        let qty = books.length;
-        let amount = qty * this.unitPrice * this.discount[qty];
+
+        let groupByBooks = _(books)
+            .groupBy()
+            .map((group, key) => group.length)
+            .value();
+
+        let amount = 0;
+        while (typeof groupByBooks !== 'undefined' && groupByBooks.length > 0) {
+
+            let qty = groupByBooks.length;
+            amount += qty * this.unitPrice * this.discount[qty];
+
+            for (var index = 0; index < groupByBooks.length; index) {
+                if (groupByBooks[index] > 0) {
+                    groupByBooks[index] = groupByBooks[index] - 1;
+                    if (groupByBooks[index] === 0) {
+                        groupByBooks.splice(0, 1);
+                    }
+                    else {
+                        index++;
+                    }
+                }
+            }
+        }
+
         return amount;
     };
+
+
 }
 
 module.exports = PotterShoppingCart;
