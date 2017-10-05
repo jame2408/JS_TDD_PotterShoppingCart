@@ -21,7 +21,7 @@ class PotterShoppingCart {
 
         let amount = 0;
         while (typeof groupByBooks !== 'undefined' && groupByBooks.length > 0) {
-
+        
             let qty = groupByBooks.length;
             amount += qty * this.unitPrice * this.discount[qty];
 
@@ -29,7 +29,7 @@ class PotterShoppingCart {
                 if (groupByBooks[index] > 0) {
                     groupByBooks[index] = groupByBooks[index] - 1;
                     if (groupByBooks[index] === 0) {
-                        groupByBooks.splice(0, 1);
+                        groupByBooks.splice(index, 1);
                     }
                     else {
                         index++;
