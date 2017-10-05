@@ -1,6 +1,10 @@
 class PotterShoppingCart {
     Checkout(books) {
-        return 0;
+        const unitPrice = 100;
+        
+        let qty = books.length;
+        let amount = qty * unitPrice;
+        return amount;
     };
 }
 
