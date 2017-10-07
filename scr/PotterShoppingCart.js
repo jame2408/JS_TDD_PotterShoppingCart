@@ -25,23 +25,26 @@ class PotterShoppingCart {
             let qty = groupByBooks.length;
             amount += qty * this.unitPrice * this.discount[qty];
 
-            for (var index = 0; index < groupByBooks.length; index) {
-                if (groupByBooks[index] > 0) {
-                    groupByBooks[index] = groupByBooks[index] - 1;
-                    if (groupByBooks[index] === 0) {
-                        groupByBooks.splice(index, 1);
-                    }
-                    else {
-                        index++;
-                    }
-                }
-            }
+            hasNextDiscount(groupByBooks);
+            
         }
 
         return amount;
     };
+}
 
-
+hasNextDiscount = function (groupByBooks) {
+    for (var index = 0; index < groupByBooks.length; index) {
+        if (groupByBooks[index] > 0) {
+            groupByBooks[index] = groupByBooks[index] - 1;
+            if (groupByBooks[index] === 0) {
+                groupByBooks.splice(index, 1);
+            }
+            else {
+                index++;
+            }
+        }
+    }
 }
 
 module.exports = PotterShoppingCart;
